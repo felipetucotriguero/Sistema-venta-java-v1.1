@@ -508,6 +508,11 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel7.setText("Stock Disponible");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
+        txtCodigoVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoVentaActionPerformed(evt);
+            }
+        });
         txtCodigoVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCodigoVentaKeyPressed(evt);
@@ -518,6 +523,11 @@ public final class Sistema extends javax.swing.JFrame {
         });
         jPanel2.add(txtCodigoVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 102, 30));
 
+        txtDescripcionVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionVentaActionPerformed(evt);
+            }
+        });
         txtDescripcionVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDescripcionVentaKeyTyped(evt);
@@ -576,6 +586,11 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel9.setText("Nombre:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 352, -1, -1));
 
+        txtRucVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRucVentaActionPerformed(evt);
+            }
+        });
         txtRucVenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtRucVentaKeyPressed(evt);
@@ -661,6 +676,12 @@ public final class Sistema extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("Nombre:");
+
+        txtTelefonoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoClienteKeyTyped(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setText("Télefono:");
@@ -815,11 +836,23 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel17.setText("NIT:");
 
+        txtRucProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRucProveedorKeyTyped(evt);
+            }
+        });
+
         jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel18.setText("Nombre:");
 
         jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel19.setText("Teléfono:");
+
+        txtTelefonoProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoProveedorKeyTyped(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel20.setText("Dirección:");
@@ -965,6 +998,12 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel22.setText("Código:");
 
+        txtCodigoPro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoProKeyTyped(evt);
+            }
+        });
+
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel23.setText("Descripción:");
 
@@ -976,10 +1015,20 @@ public final class Sistema extends javax.swing.JFrame {
                 txtCantProActionPerformed(evt);
             }
         });
+        txtCantPro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCantProKeyTyped(evt);
+            }
+        });
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel25.setText("Precio:");
 
+        txtPrecioPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioProActionPerformed(evt);
+            }
+        });
         txtPrecioPro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecioProKeyTyped(evt);
@@ -1187,8 +1236,20 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel31.setText("MENSAJE");
         jPanel7.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        txtRucConfig.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRucConfigKeyTyped(evt);
+            }
+        });
         jPanel7.add(txtRucConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 147, 30));
         jPanel7.add(txtNombreConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 220, 30));
+
+        txtTelefonoConfig.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoConfigKeyTyped(evt);
+            }
+        });
         jPanel7.add(txtTelefonoConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 218, 30));
         jPanel7.add(txtDireccionConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 147, 30));
         jPanel7.add(txtMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 400, 30));
@@ -1716,6 +1777,7 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void txtDniClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniClienteKeyTyped
         // TODO add your handling code here:
+        event.numberKeyPress(evt, txtDniCliente);
     }//GEN-LAST:event_txtDniClienteKeyTyped
 
     private void TableClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableClienteMouseClicked
@@ -1752,7 +1814,7 @@ public final class Sistema extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Debes buscar un cliente");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Noy productos en la venta");
+            JOptionPane.showMessageDialog(null, "No hay productos en la venta");
         }
 
     }//GEN-LAST:event_btnGenerarVentaActionPerformed
@@ -1797,7 +1859,7 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void txtCantidadVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVentaKeyTyped
         // TODO add your handling code here:
-        event.numberKeyPress(evt);
+        event.numberKeyPress(evt, txtCantidadVenta);
     }//GEN-LAST:event_txtCantidadVentaKeyTyped
 
     private void txtCantidadVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVentaKeyPressed
@@ -1848,12 +1910,15 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void txtDescripcionVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionVentaKeyTyped
         // TODO add your handling code here:
-        event.textKeyPress(evt);
+        event.textAndNumberKeyPress(evt, txtDescripcionVenta);
     }//GEN-LAST:event_txtDescripcionVentaKeyTyped
 
     private void txtCodigoVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVentaKeyTyped
         // TODO add your handling code here:
-        event.numberKeyPress(evt);
+        
+        // ESTO ES PARA QUE PUEDA INTRODUCIR TEXTO VALIDADO O PERMITIDO
+        //event.numberKeyPress(evt, txtCodigoVenta);        
+        event.textAndNumberKeyPress(evt, txtCodigoVenta);
     }//GEN-LAST:event_txtCodigoVentaKeyTyped
 
     private void txtCodigoVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVentaKeyPressed
@@ -1882,6 +1947,63 @@ public final class Sistema extends javax.swing.JFrame {
     private void txtCantProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantProActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantProActionPerformed
+
+    private void txtPrecioProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioProActionPerformed
+
+    private void txtCodigoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoVentaActionPerformed
+
+    private void txtDescripcionVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcionVentaActionPerformed
+
+    private void txtRucVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRucVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRucVentaActionPerformed
+
+    private void txtTelefonoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoClienteKeyTyped
+        // TODO add your handling code here:
+        // acepta numeros + scape y _
+        event.numberPlusSpaceKeyPress(evt, txtTelefonoCliente);
+    }//GEN-LAST:event_txtTelefonoClienteKeyTyped
+
+    private void txtRucProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRucProveedorKeyTyped
+        // TODO add your handling code here:
+        // Solo acepta numeros
+        event.numberKeyPress(evt, txtRucProveedor);
+    }//GEN-LAST:event_txtRucProveedorKeyTyped
+
+    private void txtTelefonoProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoProveedorKeyTyped
+        // TODO add your handling code here:
+        // Solo acepta numeros
+        event.numberKeyPress(evt, txtTelefonoProveedor);
+    }//GEN-LAST:event_txtTelefonoProveedorKeyTyped
+
+    private void txtCodigoProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProKeyTyped
+        // TODO add your handling code here:
+        // acepta numeros y texto
+        event.textAndNumberKeyPress(evt, txtCodigoPro);
+    }//GEN-LAST:event_txtCodigoProKeyTyped
+
+    private void txtCantProKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantProKeyTyped
+        // TODO add your handling code here:
+        // Solo acepta numeros
+        event.numberKeyPress(evt, txtCodigoPro);
+    }//GEN-LAST:event_txtCantProKeyTyped
+
+    private void txtRucConfigKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRucConfigKeyTyped
+        // TODO add your handling code here:
+        // Solo acepta numeros
+        event.numberKeyPress(evt, txtRucConfig);
+    }//GEN-LAST:event_txtRucConfigKeyTyped
+
+    private void txtTelefonoConfigKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoConfigKeyTyped
+        // TODO add your handling code here:
+        event.numberPlusSpaceKeyPress(evt, txtTelefonoConfig);
+    }//GEN-LAST:event_txtTelefonoConfigKeyTyped
 
     /**
      * @param args the command line arguments
