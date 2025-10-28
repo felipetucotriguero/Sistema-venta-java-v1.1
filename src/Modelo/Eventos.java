@@ -18,9 +18,9 @@ public class Eventos {
             evt.consume();
 
             // Solo hacer beep si hay algo escrito
-            if (!textField.getText().isEmpty()) {
+            /*if (!textField.getText().isEmpty()) {
                 Toolkit.getDefaultToolkit().beep();
-            }
+            }*/
         }
     }
 
@@ -37,9 +37,9 @@ public class Eventos {
             evt.consume();
 
             // Solo hacer beep si hay algo escrito
-            if (!textField.getText().isEmpty()) {
+            /*if (!textField.getText().isEmpty()) {
                 Toolkit.getDefaultToolkit().beep();
-            }
+            }*/
         }
     }
 
@@ -59,11 +59,6 @@ public class Eventos {
         if (!Character.isLetterOrDigit(car) && car != KeyEvent.VK_BACK_SPACE
                 && car != KeyEvent.VK_SPACE && car != '-' && car != '_') {
             evt.consume();
-
-            // Solo hacer beep si hay algo escrito
-            if (!textField.getText().isEmpty()) {
-                Toolkit.getDefaultToolkit().beep();
-            }
         }
     }
 

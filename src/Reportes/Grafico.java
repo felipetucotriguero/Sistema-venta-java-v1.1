@@ -30,7 +30,7 @@ public class Grafico {
             int contador = 0;
 
             while (rs.next()) {
-                dataset.setValue("Venta " + (contador + 1), rs.getDouble("total"));
+                dataset.setValue("Venta " + (contador + 1) + ": " +rs.getString("total"), rs.getDouble("total"));
                 contador++;
             }
 
@@ -56,6 +56,31 @@ public class Grafico {
                     "Error al generar el gráfico:\n" + e.getMessage(),
                     "Error SQL",
                     JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void Graficar2(String fecha) {
+        Connection con;
+        Conexion cn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        try {
+            String sql = "SELECT total FROM ventas WHERE fecha = ?";
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, fecha);
+            rs = ps.executeQuery();
+            DefaultPieDataset dateset = new DefaultPieDataset();
+            while (rs.next()) {
+                dateset.setValue(rs.getString("total"), rs.getDouble("total"));
+            }
+            JFreeChart jf = ChartFactory.createPieChart("Reporte de Venta", dateset);
+            ChartFrame f = new ChartFrame("Total de Ventas por dia", jf);
+            f.setSize(1000, 500);
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
+        } catch (SQLException e) {
+            System.out.println(e.toString());
         }
     }
 

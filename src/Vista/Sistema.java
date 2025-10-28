@@ -1810,6 +1810,7 @@ public final class Sistema extends javax.swing.JFrame {
                 ActualizarStock();
                 LimpiarTableVenta();
                 LimpiarClienteventa();
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Debes buscar un cliente");
             }
@@ -2242,6 +2243,8 @@ public final class Sistema extends javax.swing.JFrame {
         }
         int cliente = Integer.parseInt(txtIdCV.getText());
         Vdao.pdfV(id, cliente, Totalpagar, LabelVendedor.getText());
+        // Actualizamos a 0 porque ya se realizo una nueva venta
+        LabelTotal.setText("0");
     }
 
     private void ActualizarStock() {
