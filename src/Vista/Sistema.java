@@ -56,6 +56,8 @@ public final class Sistema extends javax.swing.JFrame {
 
     public Sistema() {
         initComponents();
+        
+        jTabbedPane1.setUI(null);
     }
 
     public Sistema(login priv) {
@@ -73,6 +75,7 @@ public final class Sistema extends javax.swing.JFrame {
         if (priv.getRol().equals("Asistente")) {
             btnProductos.setEnabled(false);
             btnProveedor.setEnabled(false);
+            jButton1.setEnabled(false);
             LabelVendedor.setText(priv.getNombre());
         } else {
             LabelVendedor.setText(priv.getNombre());
@@ -166,9 +169,6 @@ public final class Sistema extends javax.swing.JFrame {
         }
         TableVentas.setModel(modelo);
 
-        int n = 3; // tomamos las últimas 3 ventas
-        double prediccion = predecirSiguienteVenta(n);
-        System.out.println("Predicción de la próxima venta: " + prediccion);
     }
 
     public void LimpiarTable() {
@@ -184,7 +184,21 @@ public final class Sistema extends javax.swing.JFrame {
         List<Integer> ventas = Vdao.obtenerUltimasVentas(limite);
 
         if (ventas.isEmpty()) {
-            System.out.println("No hay datos de ventas en la base de datos.");
+            JOptionPane.showMessageDialog(null,
+                    //"No hay datos de ventas en la base de datos.", 
+                    "Deves ingresar un numero mayor a 0.",
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+                    jTxtPrediccion.setText("");
+            return 0;
+        }
+
+        // 🔹 Aquí verificas si hay suficientes datos
+        if (ventas.size() < limite) {
+            JOptionPane.showMessageDialog(null,
+                    "No hay suficientes datos para calcular un promedio con n = " + limite,
+                    "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    jTxtPrediccion.setText("");
+
             return 0;
         }
 
@@ -215,6 +229,7 @@ public final class Sistema extends javax.swing.JFrame {
         LabelVendedor = new javax.swing.JLabel();
         tipo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -300,9 +315,10 @@ public final class Sistema extends javax.swing.JFrame {
         TableVentas = new javax.swing.JTable();
         btnPdfVentas = new javax.swing.JButton();
         txtIdVenta = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        LabelPrediccion = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
+        jTxtPrediccion = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -333,7 +349,6 @@ public final class Sistema extends javax.swing.JFrame {
         cbxRol = new javax.swing.JComboBox<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         TableUsuarios = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -481,6 +496,9 @@ public final class Sistema extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 560));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/encabezado.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 870, 130));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1197,20 +1215,35 @@ public final class Sistema extends javax.swing.JFrame {
         jPanel6.add(btnPdfVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
         jPanel6.add(txtIdVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 46, -1));
 
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("0");
-        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, 160, -1));
+        LabelPrediccion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        LabelPrediccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelPrediccion.setText("0");
+        jPanel6.add(LabelPrediccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 130, -1));
 
         jLabel38.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel38.setText("Historial Ventas");
-        jPanel6.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 280, -1));
+        jPanel6.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 190, -1));
 
         jLabel39.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("Prediccion siguiente venta: ");
-        jPanel6.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 250, -1));
+        jLabel39.setText("Prediccion siguiente venta n: ");
+        jPanel6.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 250, -1));
+
+        jTxtPrediccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtPrediccionActionPerformed(evt);
+            }
+        });
+        jTxtPrediccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTxtPrediccionKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTxtPrediccionKeyTyped(evt);
+            }
+        });
+        jPanel6.add(jTxtPrediccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 60, -1));
 
         jTabbedPane1.addTab("5", jPanel6);
 
@@ -1402,9 +1435,6 @@ public final class Sistema extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 95, 860, 460));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/encabezado.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 870, 130));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1454,6 +1484,7 @@ public final class Sistema extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(4);
         LimpiarTable();
         ListarVentas();
+        //
     }//GEN-LAST:event_btnVentasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1810,7 +1841,7 @@ public final class Sistema extends javax.swing.JFrame {
                 ActualizarStock();
                 LimpiarTableVenta();
                 LimpiarClienteventa();
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "Debes buscar un cliente");
             }
@@ -1916,7 +1947,7 @@ public final class Sistema extends javax.swing.JFrame {
 
     private void txtCodigoVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVentaKeyTyped
         // TODO add your handling code here:
-        
+
         // ESTO ES PARA QUE PUEDA INTRODUCIR TEXTO VALIDADO O PERMITIDO
         //event.numberKeyPress(evt, txtCodigoVenta);        
         event.textAndNumberKeyPress(evt, txtCodigoVenta);
@@ -2006,6 +2037,35 @@ public final class Sistema extends javax.swing.JFrame {
         event.numberPlusSpaceKeyPress(evt, txtTelefonoConfig);
     }//GEN-LAST:event_txtTelefonoConfigKeyTyped
 
+    private void jTxtPrediccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPrediccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtPrediccionActionPerformed
+
+    private void jTxtPrediccionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtPrediccionKeyPressed
+        // TODO add your handling code here:
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String n = jTxtPrediccion.getText();
+
+            // Si no ingresas datos no predice nada
+            if (!n.equals("")){
+                double prediccion = predecirSiguienteVenta(Integer.parseInt(n));
+                System.out.println("Predicción de la próxima venta: " + prediccion);
+                LabelPrediccion.setText(String.valueOf(prediccion));
+            }
+            else {
+                JOptionPane.showMessageDialog(null, 
+            "Debes ingresar un valor numerico para hacer la prediccion", 
+            "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jTxtPrediccionKeyPressed
+
+    private void jTxtPrediccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtPrediccionKeyTyped
+        // TODO add your handling code here:
+        event.numberKeyPress(evt, jTxtPrediccion);
+    }//GEN-LAST:event_jTxtPrediccionKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -2042,6 +2102,7 @@ public final class Sistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelPrediccion;
     private javax.swing.JLabel LabelTotal;
     private javax.swing.JLabel LabelVendedor;
     private com.toedter.calendar.JDateChooser Midate;
@@ -2085,7 +2146,6 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2137,6 +2197,7 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTxtPrediccion;
     private javax.swing.JLabel tipo;
     private javax.swing.JTextField txtCantPro;
     private javax.swing.JTextField txtCantidadVenta;

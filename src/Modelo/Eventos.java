@@ -35,11 +35,29 @@ public class Eventos {
         // Permite números y Backspace
         if (!Character.isDigit(car) && car != KeyEvent.VK_BACK_SPACE) {
             evt.consume();
+        }
+    }
 
-            // Solo hacer beep si hay algo escrito
-            /*if (!textField.getText().isEmpty()) {
-                Toolkit.getDefaultToolkit().beep();
-            }*/
+    /**
+     * Este método está diseñado para ser llamado en el evento KeyTyped o
+     * KeyPressed de un JTextField. Solo permite la entrada de dígitos (0-9) y
+     * la tecla de retroceso (Backspace), bloqueando el signo negativo y el
+     * espacio.
+     */
+    public void numberKeyPress2(KeyEvent evt, JTextField textField) {
+        char car = evt.getKeyChar();
+
+        // 1. Condición para permitir la entrada: 
+        //    Debe ser un dígito O debe ser la tecla de retroceso.
+        boolean isAllowed = Character.isDigit(car) || car == java.awt.event.KeyEvent.VK_BACK_SPACE;
+
+        // 2. Condición para bloquear la entrada:
+        //    Si NO está permitido (isAllowed es false), consumimos el evento.
+        if (!isAllowed) {
+            evt.consume();
+
+            // Opcional: Proporcionar feedback visual o sonoro
+            // java.awt.Toolkit.getDefaultToolkit().beep();
         }
     }
 
@@ -59,7 +77,10 @@ public class Eventos {
         if (!Character.isLetterOrDigit(car) && car != KeyEvent.VK_BACK_SPACE
                 && car != KeyEvent.VK_SPACE && car != '-' && car != '_') {
             evt.consume();
-        }
+        }// Solo hacer beep si hay algo escrito
+        /*if (!textField.getText().isEmpty()) {
+                Toolkit.getDefaultToolkit().beep();
+            }*/
     }
 
     public void numberDecimalKeyPress(KeyEvent evt, JTextField textField) {
@@ -67,6 +88,10 @@ public class Eventos {
         char car = evt.getKeyChar();
         if ((car < '0' || car > '9') && textField.getText().contains(".") && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
+// Solo hacer beep si hay algo escrito
+            /*if (!textField.getText().isEmpty()) {
+                Toolkit.getDefaultToolkit().beep();
+            }*/
         } else if ((car < '0' || car > '9') && (car != '.') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
         }

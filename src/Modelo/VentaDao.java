@@ -151,11 +151,12 @@ public class VentaDao {
         return cl;
     }
     
+    
     // Metodo añadido para mostrar la prediccion
     // Método para obtener las últimas N ventas
     public List<Integer> obtenerUltimasVentas(int limite) {
         List<Integer> ventas = new ArrayList<>();
-        String sql = "SELECT total FROM ventas ORDER BY fecha DESC LIMIT ?";
+        String sql = "SELECT total FROM ventas ORDER BY id DESC LIMIT ?";
 
         try (Connection con = new Conexion().getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
