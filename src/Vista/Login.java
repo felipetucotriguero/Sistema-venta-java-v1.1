@@ -17,7 +17,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         txtCorreo.setText("felipe@gmail.com");
-        txtPass.setText("admin");
+        txtPass.setText("felipe");
     }
     public void validar(){
         String correo = txtCorreo.getText();

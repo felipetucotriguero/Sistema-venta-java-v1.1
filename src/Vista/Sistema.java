@@ -229,7 +229,6 @@ public final class Sistema extends javax.swing.JFrame {
         LabelVendedor = new javax.swing.JLabel();
         tipo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -349,6 +348,8 @@ public final class Sistema extends javax.swing.JFrame {
         cbxRol = new javax.swing.JComboBox<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         TableUsuarios = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        BtnCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -496,9 +497,6 @@ public final class Sistema extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 560));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/encabezado.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 870, 130));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1435,6 +1433,17 @@ public final class Sistema extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 95, 860, 460));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/encabezado.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 870, 130));
+
+        BtnCerrarSesion.setText("Cerrar Sesión");
+        BtnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarSesionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2051,7 +2060,7 @@ public final class Sistema extends javax.swing.JFrame {
             if (!n.equals("")){
                 double prediccion = predecirSiguienteVenta(Integer.parseInt(n));
                 System.out.println("Predicción de la próxima venta: " + prediccion);
-                LabelPrediccion.setText(String.valueOf(prediccion));
+                LabelPrediccion.setText(String.valueOf(prediccion + " Bs."));
             }
             else {
                 JOptionPane.showMessageDialog(null, 
@@ -2065,6 +2074,25 @@ public final class Sistema extends javax.swing.JFrame {
         // TODO add your handling code here:
         event.numberKeyPress(evt, jTxtPrediccion);
     }//GEN-LAST:event_jTxtPrediccionKeyTyped
+
+    private void BtnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(
+            null,
+            "¿Estás seguro de que deseas cerrar sesión?",
+            "Cerrar sesión",
+            JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            // Cierra la ventana actual
+            dispose();
+            
+            // Abre la ventana de login
+            Login login = new Login();
+            login.setVisible(true);
+        }
+    }//GEN-LAST:event_BtnCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2102,6 +2130,7 @@ public final class Sistema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrarSesion;
     private javax.swing.JLabel LabelPrediccion;
     private javax.swing.JLabel LabelTotal;
     private javax.swing.JLabel LabelVendedor;
