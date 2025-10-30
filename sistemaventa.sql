@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2025 a las 12:04:09
+-- Tiempo de generación: 30-10-2025 a las 09:14:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -42,7 +42,8 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`id`, `dni`, `nombre`, `telefono`, `direccion`) VALUES
 (1, '1001', 'Yamil fernando', '78454251', 'La Paz - Bolivia'),
 (2, '1002', 'Juan Perez', '2323929', 'Munaypata - La Paz'),
-(3, '1003', 'Lucas Dalto', '12138291', 'Villa armonia - Tarija');
+(3, '1003', 'Lucas Dalto', '12138291', 'Villa armonia - Tarija'),
+(4, '1004', 'Mariana López Perez', '78788884', 'Zona Sur - Cochabamba');
 
 -- --------------------------------------------------------
 
@@ -108,9 +109,18 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `proveedor`, `stock`, `precio`) VALUES
-(1, '3003', 'Creatine Pure 100%', 1, 11, 450.00),
+(1, '3003', 'Creatine Pure 100%', 1, 15, 450.00),
 (2, '3002', 'Silimarina - cardio mariano', 1, 99, 134.00),
-(3, '3001', 'Profit con Omega 3', 2, 54, 350.00);
+(3, '3001', 'Profit con Omega 3', 2, 54, 350.00),
+(4, '3004', 'Proteina Hidrolizada en polvo Dymatize', 2, 15, 780.00),
+(5, '3005', 'Cretine Monohidrate', 4, 29, 415.00),
+(6, '3006', 'Dr. Feaar - Electrolito ', 1, 121, 365.00),
+(7, '3007', 'Syntrax Goliat', 3, 38, 915.00),
+(8, '3008', 'Proteina con Antioxidante', 1, 18, 200.00),
+(9, '3009', 'Ovo Protein', 2, 56, 300.00),
+(10, '3010', 'Isofi Protein 5lb', 1, 12, 920.00),
+(11, '3011', 'Creatina ronnie Coleman 200g', 3, 320, 50.00),
+(12, '3012', 'Omega 3 Forte', 5, 45, 120.00);
 
 -- --------------------------------------------------------
 
@@ -132,7 +142,10 @@ CREATE TABLE `proveedor` (
 
 INSERT INTO `proveedor` (`id`, `ruc`, `nombre`, `telefono`, `direccion`) VALUES
 (1, '2001', 'Natural Diet', '7989788', 'La Paz - Bolivia'),
-(2, '2002', 'Jes FIT Suplementos', '78748133', 'La Paz - Bolivia');
+(2, '2002', 'Jes FIT Suplementos', '78748133', 'La Paz - Bolivia'),
+(3, '2003', 'Spartans Nutrition Suplementos', '7534313', 'Yanacocha, Galeria Cristal'),
+(4, '2004', 'Dragon Pharma', '25483153', 'Santa Cruz - Bolivia'),
+(5, '2005', 'Katigua', '787864864', 'Sacaba - Cochabamba');
 
 -- --------------------------------------------------------
 
@@ -239,7 +252,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `config`
@@ -257,13 +270,13 @@ ALTER TABLE `detalle`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
