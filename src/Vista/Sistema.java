@@ -19,6 +19,7 @@ import Modelo.ProveedorDao;
 import Modelo.Venta;
 import Modelo.VentaDao;
 import Modelo.login;
+import Reportes.GraficaEOQ;
 import Reportes.Grafico;
 import Reportes.GraficoPareto;
 import java.awt.event.KeyEvent;
@@ -230,7 +231,7 @@ public final class Sistema extends javax.swing.JFrame {
         tipo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        Mantenimiento = new javax.swing.JButton();
+        BtnMantenimiento = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -312,6 +313,7 @@ public final class Sistema extends javax.swing.JFrame {
         btnEliminarPro = new javax.swing.JButton();
         btnNuevoPro = new javax.swing.JButton();
         BtnClasificacionABC = new javax.swing.JButton();
+        BtnEOQ = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         TableVentas = new javax.swing.JTable();
@@ -351,6 +353,7 @@ public final class Sistema extends javax.swing.JFrame {
         cbxRol = new javax.swing.JComboBox<>();
         jScrollPane6 = new javax.swing.JScrollPane();
         TableUsuarios = new javax.swing.JTable();
+        jPanel14 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         BtnCerrarSesion = new javax.swing.JButton();
 
@@ -456,14 +459,14 @@ public final class Sistema extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logo_pdf.png"))); // NOI18N
 
-        Mantenimiento.setBackground(new java.awt.Color(153, 153, 153));
-        Mantenimiento.setForeground(new java.awt.Color(255, 255, 255));
-        Mantenimiento.setText("Mantenimiento");
-        Mantenimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Mantenimiento.setFocusable(false);
-        Mantenimiento.addActionListener(new java.awt.event.ActionListener() {
+        BtnMantenimiento.setBackground(new java.awt.Color(153, 153, 153));
+        BtnMantenimiento.setForeground(new java.awt.Color(255, 255, 255));
+        BtnMantenimiento.setText("Mantenimiento");
+        BtnMantenimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnMantenimiento.setFocusable(false);
+        BtnMantenimiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MantenimientoActionPerformed(evt);
+                BtnMantenimientoActionPerformed(evt);
             }
         });
 
@@ -486,7 +489,7 @@ public final class Sistema extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(Mantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BtnMantenimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -511,7 +514,7 @@ public final class Sistema extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Mantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BtnMantenimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 26, Short.MAX_VALUE))
         );
 
@@ -1201,7 +1204,15 @@ public final class Sistema extends javax.swing.JFrame {
                 BtnClasificacionABCActionPerformed(evt);
             }
         });
-        jPanel5.add(BtnClasificacionABC, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
+        jPanel5.add(BtnClasificacionABC, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+
+        BtnEOQ.setText("EOQ");
+        BtnEOQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEOQActionPerformed(evt);
+            }
+        });
+        jPanel5.add(BtnEOQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 90, -1));
 
         jTabbedPane1.addTab("4", jPanel5);
 
@@ -1457,6 +1468,19 @@ public final class Sistema extends javax.swing.JFrame {
         jPanel12.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 540, 380));
 
         jTabbedPane1.addTab("7", jPanel12);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 855, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 432, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("8", jPanel14);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 95, 860, 460));
 
@@ -2128,9 +2152,20 @@ public final class Sistema extends javax.swing.JFrame {
         GraficoPareto.GraficarPareto();
     }//GEN-LAST:event_BtnClasificacionABCActionPerformed
 
-    private void MantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoActionPerformed
+    private void BtnMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMantenimientoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MantenimientoActionPerformed
+        // Cambiar al panel 14 dentro del JTabbedPane
+        jTabbedPane1.setSelectedIndex(7); // el índice empieza desde 0
+        
+    }//GEN-LAST:event_BtnMantenimientoActionPerformed
+
+    private void BtnEOQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEOQActionPerformed
+        // TODO add your handling code here:
+                                                          
+// Simplemente llama al método estático
+    GraficaEOQ.GraficarEOQ();
+
+    }//GEN-LAST:event_BtnEOQActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2170,10 +2205,11 @@ public final class Sistema extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarSesion;
     private javax.swing.JButton BtnClasificacionABC;
+    private javax.swing.JButton BtnEOQ;
+    private javax.swing.JButton BtnMantenimiento;
     private javax.swing.JLabel LabelPrediccion;
     private javax.swing.JLabel LabelTotal;
     private javax.swing.JLabel LabelVendedor;
-    private javax.swing.JButton Mantenimiento;
     private com.toedter.calendar.JDateChooser Midate;
     private javax.swing.JTable TableCliente;
     private javax.swing.JTable TableProducto;
@@ -2251,6 +2287,7 @@ public final class Sistema extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
