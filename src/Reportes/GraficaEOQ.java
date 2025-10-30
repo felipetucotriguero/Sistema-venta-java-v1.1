@@ -234,11 +234,11 @@ public class GraficaEOQ {
         
         panelDatos.add(new JLabel("  Demanda Anual (D): " + 
                        String.format("%.0f", producto.demandaAnual) + " unidades"));
-        panelDatos.add(new JLabel("  Costo por Orden (S): $" + 
+        panelDatos.add(new JLabel("  Costo por Orden (S): Bs " + 
                        String.format("%.2f", producto.costoOrden)));
-        panelDatos.add(new JLabel("  Costo de Mantener (H): $" + 
+        panelDatos.add(new JLabel("  Costo de Mantener (H): Bs " + 
                        String.format("%.2f", producto.costoMantener) + "/unidad/año"));
-        panelDatos.add(new JLabel("  Precio por Unidad (P): $" + 
+        panelDatos.add(new JLabel("  Precio por Unidad (P): Bs " + 
                        String.format("%.2f", producto.precioUnidad)));
         
         // EOQ calculado
@@ -248,7 +248,7 @@ public class GraficaEOQ {
         panelDatos.add(lblEOQ);
         
         // Costo total mínimo
-        JLabel lblCostoMin = new JLabel("  Costo Total Mínimo: $" + 
+        JLabel lblCostoMin = new JLabel("  Costo Total Mínimo: Bs " + 
                                        String.format("%.2f", costoTotalMinimo));
         lblCostoMin.setFont(new Font("Arial", Font.BOLD, 14));
         lblCostoMin.setForeground(new Color(0, 0, 150));
@@ -306,7 +306,7 @@ public class GraficaEOQ {
         JFreeChart chart = ChartFactory.createXYLineChart(
             "Análisis de Costos - Modelo EOQ",
             "Cantidad de Orden (Q)",
-            "Costo Anual ($)",
+            "Costo Anual (Bs)",
             dataset,
             PlotOrientation.VERTICAL,
             true,
