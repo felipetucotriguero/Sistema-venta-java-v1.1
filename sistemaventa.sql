@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2025 a las 09:14:42
+-- Tiempo de generación: 30-10-2025 a las 11:13:08
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -88,6 +88,36 @@ CREATE TABLE `detalle` (
 INSERT INTO `detalle` (`id`, `id_pro`, `cantidad`, `precio`, `id_venta`) VALUES
 (21, 2, 11, 34.00, 21),
 (22, 1, 1, 3000.00, 22);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `inventario_eoq`
+--
+
+CREATE TABLE `inventario_eoq` (
+  `id` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `demanda_anual` decimal(10,2) NOT NULL,
+  `costo_orden` decimal(10,2) NOT NULL DEFAULT 50.00,
+  `costo_mantener` decimal(10,2) NOT NULL,
+  `precio_unitario` decimal(10,2) NOT NULL,
+  `eoq_calculado` decimal(10,2) DEFAULT NULL,
+  `costo_total_minimo` decimal(10,2) DEFAULT NULL,
+  `fecha_calculo` datetime DEFAULT current_timestamp(),
+  `activo` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `inventario_eoq`
+--
+
+INSERT INTO `inventario_eoq` (`id`, `id_producto`, `demanda_anual`, `costo_orden`, `costo_mantener`, `precio_unitario`, `eoq_calculado`, `costo_total_minimo`, `fecha_calculo`, `activo`) VALUES
+(16, 1, 604.00, 50.00, 90.00, 450.00, 25.91, 2331.52, '2025-10-30 06:07:24', 1),
+(17, 2, 599.00, 50.00, 26.80, 134.00, 61.08, 1637.07, '2025-10-30 06:00:51', 1),
+(18, 3, 181.00, 50.00, 70.00, 350.00, 16.08, 1125.61, '2025-10-30 06:10:23', 1),
+(19, 4, 809.00, 50.00, 156.00, 780.00, 25.32, 3949.68, '2025-10-30 06:01:00', 1),
+(20, 5, 703.00, 50.00, 83.00, 415.00, 29.10, 2415.55, '2025-10-30 06:06:19', 1);
 
 -- --------------------------------------------------------
 
@@ -219,6 +249,13 @@ ALTER TABLE `detalle`
   ADD KEY `id_pro` (`id_pro`);
 
 --
+-- Indices de la tabla `inventario_eoq`
+--
+ALTER TABLE `inventario_eoq`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_producto` (`id_producto`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -267,6 +304,12 @@ ALTER TABLE `detalle`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
+-- AUTO_INCREMENT de la tabla `inventario_eoq`
+--
+ALTER TABLE `inventario_eoq`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -300,6 +343,12 @@ ALTER TABLE `ventas`
 ALTER TABLE `detalle`
   ADD CONSTRAINT `detalle_ibfk_1` FOREIGN KEY (`id_pro`) REFERENCES `productos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `detalle_ibfk_2` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `inventario_eoq`
+--
+ALTER TABLE `inventario_eoq`
+  ADD CONSTRAINT `fk_inventario_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `productos`
